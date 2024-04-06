@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     for (const button of buttons) {
         button.addEventListener('click',function(){
             if (this.getAttribute('data-type')==='submit') {
-                alert('You clicked Submit');
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute('data-type');
                 //alert(`You clicked ${gameType}`);
@@ -35,8 +35,21 @@ function runGame(gameType){
 
 }
 
+/**
+ * Checks the answer against the first element in 
+ * the returned calculateAnswer array
+ * @param {*} params 
+ */
 function checkAnswer(params) {
+    const userAnswer = parseInt(document.getElementById('answer-box').value);
+    const calculatedAnswer = calculateCorrectAnswer();
     
+    if (userAnswer === calculatedAnswer){
+        alert("You've got it right");
+    } else {
+        alert(`hmmm... You answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}`);
+    }
+    runGame(calculatedAnswer[1]);
 }
 
 /**
