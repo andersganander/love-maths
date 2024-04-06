@@ -39,8 +39,24 @@ function checkAnswer(params) {
     
 }
 
-function calculateCorrectAnswer(params) {
-    
+/**
+ * Gets the operands and the operator directly from the form,
+ * and returns the correct answer.
+ * @param {*} params 
+ */
+function calculateCorrectAnswer() {
+    let op1 = parseInt(document.getElementById('operand1').innerText);
+    let op2 = parseInt(document.getElementById('operand2').innerText);
+    let operator = document.getElementById('operator').innerText;
+
+    if (operator === '+') {
+        return [op1 + op2, "addition"];
+    } else {
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`;
+
+    }
+
 }
 
 function incremetScore(params) {
