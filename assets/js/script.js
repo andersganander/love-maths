@@ -44,10 +44,12 @@ function checkAnswer(params) {
     const userAnswer = parseInt(document.getElementById('answer-box').value);
     const calculatedAnswer = calculateCorrectAnswer();
     
-    if (userAnswer === calculatedAnswer){
+    if (userAnswer === calculatedAnswer[0]){
         alert("You've got it right");
+        incrementScore();
     } else {
         alert(`hmmm... You answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();      
     }
     runGame(calculatedAnswer[1]);
 }
@@ -72,12 +74,16 @@ function calculateCorrectAnswer() {
 
 }
 
-function incremetScore(params) {
-    
+function incrementScore(params) {
+    let score = parseInt(document.getElementById('score').innerText);
+    document.getElementById('score').innerText = score+=1;
+    console.log(score);
 }
 
-function incremetWrongAnswer(params) {
-    
+function incrementWrongAnswer(params) {
+    let incorrect = parseInt(document.getElementById('incorrect').innerText);
+    document.getElementById('incorrect').innerText = incorrect+=1;
+    console.log(incorrect);
 }
 
 function displayAdditionQuestion(op1, op2) {
